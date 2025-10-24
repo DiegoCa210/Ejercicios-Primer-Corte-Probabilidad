@@ -1,0 +1,112 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+
+\title{\textbf{Ejercicios de Probabilidad Conjunta con Python}}
+\author{Diego Castro}
+\date{\today}
+
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{gray!5},
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\color{orange!70!black},
+    commentstyle=\color{green!40!black}\itshape,
+    showstringspaces=false,
+    frame=single,
+    framerule=0.5pt,
+    breaklines=true,
+    tabsize=4,
+    numbers=left,
+    numberstyle=\tiny\color{gray!80},
+    xleftmargin=1.5em,
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{Descripción General}
+En este documento se presentan varios ejercicios de \textbf{probabilidad conjunta}, tanto discretos como continuos, resueltos mediante código en Python.  
+Cada ejercicio incluye el cálculo de funciones de probabilidad, marginales, esperanzas, varianzas, covarianza y correlación, además de representaciones gráficas.
+
+---
+
+\section{Ejercicio 1: Selección de Estudiantes}
+\textbf{Enunciado:}  
+Se seleccionan al azar dos estudiantes en un salón que contiene 3 de sistemas, 2 de electrónica y 3 de industrial.  
+
+\begin{lstlisting}[style=pythonstyle,caption={Probabilidad conjunta discreta de estudiantes seleccionados}]
+
+\end{lstlisting}
+
+Se construye la tabla de la función de probabilidad conjunta (PMF) y se obtienen las marginales \(P(X)\) y \(P(Y)\).  
+Posteriormente se calculan las esperanzas, varianzas, covarianza y coeficiente de correlación.
+
+\begin{align*}
+E[X] &= \sum_x x P(X=x) \\
+E[Y] &= \sum_y y P(Y=y) \\
+\text{Cov}(X,Y) &= E[XY] - E[X]E[Y]
+\end{align*}
+
+---
+
+\section{Ejercicio 2: Fábrica de Dulces}
+\textbf{Enunciado:}  
+Una fábrica de dulces distribuye cajas cuya función de densidad está dada por:
+\[
+f(x,y) = \frac{2}{5}(2x + 3y), \quad 0 < x < 1, \; 0 < y < 1
+\]
+
+Se obtiene la probabilidad en la región \(B\):
+\[
+P(B) = \frac{13}{160}
+\]
+
+y se generan los gráficos de \(f(x,y)\), \(f_X(x)\) y \(f_Y(y)\).
+
+---
+
+\section{Ejercicio 3: Función de Probabilidad Discreta}
+\[
+f(x,y) = \frac{x + y}{30}, \quad x=0,1,2,3; \, y=0,1,2
+\]
+
+Se pide determinar:  
+(a) \(P(X+Y=4)\), (b) \(P(X>Y)\), (c) \(P(X \ge 2, Y \le 1)\), (d) \(P(X \le 2, Y = 1)\).
+
+---
+
+\section{Ejercicio 4: Casos Mixtos (Continuo y Discreto)}
+
+\subsection*{Ejercicio A (Continuo)}
+\[
+f(x,y) = \frac{x+y}{3}, \quad 0 \le x \le 2,\; 0 \le y \le 1
+\]
+\[
+f_X(x) = \frac{2x+1}{6}, \qquad f_Y(y) = \frac{2+2y}{3}
+\]
+
+\subsection*{Ejercicio B (Discreto)}
+\[
+P(X=x, Y=y) = \frac{2x + y}{75}, \quad x=0,\dots,4;\; y=0,\dots,2
+\]
+
+Se verifican las propiedades de normalización, se calculan esperanzas, varianzas y covarianza de la distribución.
+
+---
+
+\section*{Conclusión}
+Estos ejercicios permiten comprender cómo manipular distribuciones conjuntas discretas y continuas, calcular momentos estadísticos, y representar visualmente los resultados mediante Python.  
+Se observa además cómo usar bibliotecas como \texttt{fractions}, \texttt{numpy}, \texttt{pandas} y \texttt{matplotlib} para el análisis probabilístico.
+
+\end{document}
