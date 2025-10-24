@@ -1,0 +1,173 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{float}
+
+\title{Ejercicios con gráficas: Binomial, Poisson, Normal y Exponencial}
+\author{Diego Alejandro Castro Navarrete 20242020301}
+\date{18/10/25}
+
+\begin{document}
+\maketitle
+
+\section*{Binomial -- Ejercicio 1 (n=20, p=0.05)}
+Enunciado: \(X\sim \mathrm{Binomial}(20,0.05)\). Gráfica de la PMF (k=0..6).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=8pt,
+    xlabel={$k$},
+    ylabel={$P(X=k)$},
+    ymin=0,
+    xtick=data,
+    enlargelimits=0.15,
+    title={Binomial$(n=20,p=0.05)$ -- PMF (k=0..6)}
+]
+\addplot+[ycomb,mark=*] coordinates 
+(0,0.35848592) (1,0.37735360) (2,0.18867680) (3,0.05958215) (4,0.01332759) (5,0.00224465) (6,0.00029535) ;
+\end{axis}
+\end{tikzpicture}
+\caption{PMF Binomial (n=20, p=0.05)}
+\end{figure}
+
+\section*{Binomial -- Ejercicio 2 (n=10, p=0.25)}
+Enunciado: \(X\sim \mathrm{Binomial}(10,0.25)\). Gráfica de la PMF (k=0..10).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=9pt,
+    xlabel={$k$},
+    ylabel={$P(X=k)$},
+    ymin=0,
+    xtick=data,
+    enlargelimits=0.15,
+    title={Binomial$(n=10,p=0.25)$ -- PMF (k=0..10)}
+]
+\addplot+[ycomb,mark=*] coordinates 
+(0,0.05631351) (1,0.18771172) (2,0.28156757) (3,0.25028229) (4,0.14599800) (5,0.05839920) (6,0.01622200) (7,0.00308990) (8,0.00038624) (9,0.00002861) (10,0.00000095) ;
+\end{axis}
+\end{tikzpicture}
+\caption{PMF Binomial (n=10, p=0.25)}
+\end{figure}
+
+\section*{Poisson -- Ejercicio 3 ($\lambda=3$)}
+Enunciado: \(X\sim\mathrm{Poisson}(3)\). PMF (k=0..8).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=9pt,
+    xlabel={$k$},
+    ylabel={$P(X=k)$},
+    ymin=0,
+    xtick=data,
+    enlargelimits=0.15,
+    title={Poisson$(\lambda=3)$ -- PMF (k=0..8)}
+]
+\addplot+[ycomb,mark=*] coordinates 
+(0,0.04978707) (1,0.14936121) (2,0.22404181) (3,0.22404181) (4,0.16803136) (5,0.10081881) (6,0.05040941) (7,0.02160403) (8,0.00810151) ;
+\end{axis}
+\end{tikzpicture}
+\caption{PMF Poisson ($\lambda=3$)}
+\end{figure}
+
+\section*{Poisson -- Ejercicio 4 ($\lambda=6$)}
+Enunciado: \(X\sim\mathrm{Poisson}(6)\). PMF (k=0..12).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=7pt,
+    xlabel={$k$},
+    ylabel={$P(X=k)$},
+    ymin=0,
+    xtick=data,
+    enlargelimits=0.10,
+    title={Poisson$(\lambda=6)$ -- PMF (k=0..12)}
+]
+\addplot+[ycomb,mark=*] coordinates 
+(0,0.00247875) (1,0.01487251) (2,0.04461754) (3,0.08923508) (4,0.13385262) (5,0.16062314) (6,0.16062314) (7,0.13767698) (8,0.10325773) (9,0.06883849) (10,0.04130309) (11,0.02252896) (12,0.01126448) ;
+\end{axis}
+\end{tikzpicture}
+\caption{PMF Poisson ($\lambda=6$)}
+\end{figure}
+
+\section*{Normal -- Ejercicio A}
+Enunciado: \(X\sim N(\mu=250,\sigma=12)\). Graficar la densidad y sombrear \(P(X<230)\) y \(P(245<X<270)\).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[domain=200:300, samples=200, xlabel={x}, ylabel={f(x)}, title={Normal$(250,12^2)$}, width=12cm, height=6cm]
+\addplot [thick] {1/(12*sqrt(2*pi))*exp(-0.5*((x-250)/12)^2)};
+\addplot [fill=blue, fill opacity=0.2] fill between [of= {1/(12*sqrt(2*pi))*exp(-0.5*((x-250)/12)^2)} and 0, soft clip={domain=200:230}];
+\addplot [fill=green, fill opacity=0.15] fill between [of= {1/(12*sqrt(2*pi))*exp(-0.5*((x-250)/12)^2)} and 0, soft clip={domain=245:270}];
+\end{axis}
+\end{tikzpicture}
+\caption{Densidad Normal con áreas sombreadas.}
+\end{figure}
+
+\section*{Normal -- Ejercicio B}
+Enunciado: \(X\sim N(\mu=72,\sigma=8)\). Graficar densidad y sombrear \(P(X\ge80)\) y la distribución muestral de la media para \(n=16\) sombreando \(P(\bar X>75)\).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[domain=40:104, samples=200, xlabel={x}, ylabel={f(x)}, title={Normal$(72,8^2)$}, width=12cm, height=6cm]
+\addplot [thick] {1/(8*sqrt(2*pi))*exp(-0.5*((x-72)/8)^2)};
+\addplot [fill=orange, fill opacity=0.2] fill between [of= {1/(8*sqrt(2*pi))*exp(-0.5*((x-72)/8)^2)} and 0, soft clip={domain=80:104}];
+\end{axis}
+\end{tikzpicture}
+\caption{Densidad Normal (mu=72, sigma=8).}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[domain=66:78, samples=200, xlabel={x}, ylabel={f(x)}, title={Distribución de la media (n=16)}, width=12cm, height=5cm]
+\addplot [thick] {1/(2*sqrt(2*pi))*exp(-0.5*((x-72)/2)^2)};
+\addplot [fill=orange, fill opacity=0.2] fill between [of= {1/(2*sqrt(2*pi))*exp(-0.5*((x-72)/2)^2)} and 0, soft clip={domain=75:78}];
+\end{axis}
+\end{tikzpicture}
+\caption{Distribución de la media muestral (sigma/sqrt(n)=2).}
+\end{figure}
+
+\section*{Exponencial -- Ejercicio A}
+Enunciado: Tiempo entre llegadas con media 12 min, \(\lambda=1/12\). Graficar densidad y sombrear \(P(T<5)\) y marcar \(T\) tal que \(F(T)=0.95\).
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[domain=0:60, samples=200, xlabel={t (min)}, ylabel={f(t)}, title={Exponencial $\lambda=1/12$}, width=12cm, height=6cm]
+\addplot [thick] {(1/12)*exp(-(1/12)*x)};
+\addplot [fill=blue, fill opacity=0.2] fill between [of= {(1/12)*exp(-(1/12)*x)} and 0, soft clip={domain=0:5}];
+\addplot [dashed] coordinates {(35.948787,0) (35.948787,0.09)}; % approximate t for 95%
+\end{axis}
+\end{tikzpicture}
+\caption{Exponencial media 12 min, área para T<5 y línea para percentil 95.}
+\end{figure}
+
+\section*{Exponencial -- Ejercicio B}
+Enunciado: Tiempo de reparación con $\lambda=0.4$ (horas). Graficar densidad y sombrear $P(T<1)$.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[domain=0:12, samples=200, xlabel={t (horas)}, ylabel={f(t)}, title={Exponencial $\lambda=0.4$}, width=12cm, height=6cm]
+\addplot [thick] {0.4*exp(-0.4*x)};
+\addplot [fill=blue, fill opacity=0.2] fill between [of= {0.4*exp(-0.4*x)} and 0, soft clip={domain=0:1}];
+\end{axis}
+\end{tikzpicture}
+\caption{Exponencial $\lambda=0.4$ (horas).}
+\end{figure}
+
+\end{document}
